@@ -4,8 +4,10 @@ import java.util.Scanner;
 public class MainApp1 {
     public static void main(String[] args) throws Exception {
         Scanner sc=new Scanner(System.in);
+
         System.out.println("Enter the Number Store Data ");
         int No=sc.nextInt();
+
         //Upcasting
         Bank a1=new ICCIBank();
         //downCasting
@@ -46,6 +48,7 @@ public class MainApp1 {
                         b1.info();
                     }
                     break;
+
                 case 2:
                     System.out.println("1.Deposit Money");
                     System.out.println("Enter AccountNo");
@@ -59,17 +62,16 @@ public class MainApp1 {
                         System.out.println(e);
                     }
                     break;
+
                 case 3:
                     System.out.println("2.withdraw");
                     System.out.println("Enter Account No");
                     int accNo1= sc.nextInt();
                     System.out.println("Enter Amount");
                     double amt1= sc.nextDouble();
-
                     a1.withdraw(accNo1, amt1);
-
-
                     break;
+
                 case 4:
                     System.out.println("3.Checked Balance");
                     System.out.println("Enter Account NO");
@@ -93,28 +95,23 @@ public class MainApp1 {
                         System.out.println(e);
                     }
                     break;
+
                 case 6:
                     System.out.println("Search Customer record");
                     System.out.println("Enter account Number");
                     int accoNo1= sc.nextInt();
                     a1.SearchCustomerRecord(accoNo1);
                     break;
+
                 case 7:
                     System.out.println("Display All Customer");
-
                     a1.displayAllCustomer();
                     break;
+
                 default:
                     status=false;
 
-
             }
-
-
         }
-
-
-
-
     }
 }
