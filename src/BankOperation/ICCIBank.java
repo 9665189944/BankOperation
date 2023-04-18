@@ -1,3 +1,5 @@
+package BankOperation;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -6,9 +8,19 @@ public class ICCIBank implements Bank {
 
     Scanner sc = new Scanner(System.in);
     Customer c1;
-    ArrayList<Customer> data1 = new ArrayList<>();
+   private static ArrayList<Customer> data1 = new ArrayList<>();
 
-    void info() {
+
+   void CustomerInfo()
+   {
+       data1.add(new Customer(1,"amit"	,2000.0));
+       data1.add(new Customer(2,"Pramod"	,3000.0));
+       data1.add(new Customer(3,"Parvin"	,4000.0));
+       data1.add(new Customer(4,"Anuj"	,5000.0));
+   }
+
+
+   void info() {
         data1.add(new Customer(sc.nextInt(), sc.next(), sc.nextDouble()));
         System.out.println(data1);
     }
@@ -20,7 +32,7 @@ public class ICCIBank implements Bank {
         Iterator itr = data1.iterator();
         // System.out.println(data1);
         while (itr.hasNext()) {
-           c1 = (Customer) itr.next();
+            c1 = (Customer) itr.next();
             if (c1.getAccNo() == accNo) {
                 c1.setBankBalnce(c1.getBankBalnce() + amt);
                 System.out.println("Deposit Successfully" + c1.getBankBalnce());
@@ -43,7 +55,7 @@ public class ICCIBank implements Bank {
 
                     System.out.println("withdraw Successfully");
                 } else {
-                    throw new InsufficientBalance( "insufficient balance");
+                    throw new InsufficientBalance("insufficient balance");
                 }
             }
         }
@@ -60,22 +72,22 @@ public class ICCIBank implements Bank {
             }
         }
     }
+
     @Override
-    public  void displayAllCustomer()
-    {
+    public void displayAllCustomer() {
         Iterator<Customer> itr = data1.iterator();
         while (itr.hasNext()) {
             c1 = itr.next();
             System.out.println("========================================================");
-            System.out.println( c1.getAccNo()+"\t"+c1.getName()+"\t"+c1.getBankBalnce());
-          }
+            System.out.println(c1.getAccNo() + "\t" + c1.getName() + "\t" + c1.getBankBalnce());
         }
+    }
 
     @Override
-    public void SearchCustomerRecord(int accoNo)  {
+    public void SearchCustomerRecord(int accoNo) {
         Iterator<Customer> itr = data1.iterator();
         while (itr.hasNext()) {
-           c1 = itr.next();
+            c1 = itr.next();
             if (c1.getAccNo() == accoNo) {
                 System.out.println("========================================================");
                 System.out.println(c1.getAccNo() + "\t" + c1.getName() + "\t" + c1.getBankBalnce());
@@ -85,16 +97,40 @@ public class ICCIBank implements Bank {
     }
 
     @Override
-    public void DeleteRecord(int accNo)  {
+    public void DeleteRecord(int deleteID) {
         Iterator<Customer> itr = data1.iterator();
         while (itr.hasNext()) {
             c1 = itr.next();
-            if (c1.getAccNo() == accNo) {
-                System.out.println("========================================================");
+            if (c1.getAccNo() == deleteID - 1) {
+
                 data1.remove(c1.getAccNo());
+                System.out.println("========================================================");
+                System.out.println("Delete Record Successfully");
+                System.out.println("========================================================");
+
             }
         }
 
     }
+
+    @Override
+    public void updateNameCustomer(int updateID,String updateName) {
+        Iterator<Customer> itr = data1.iterator();
+        while (itr.hasNext()) {
+            c1 = itr.next();
+            if (c1.getAccNo() == updateID ) {
+
+                c1.setName(updateName);
+                System.out.println("===============================================");
+                System.out.println("Update Customer Name");
+                System.out.println("===============================================");
+
+            }
+        }
+    }
+
+
+
+
 }
 

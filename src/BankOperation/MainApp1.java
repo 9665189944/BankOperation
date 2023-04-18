@@ -1,25 +1,33 @@
-import java.util.ArrayList;
+package BankOperation;
+
 import java.util.Scanner;
 
 public class MainApp1 {
     public static void main(String[] args) throws Exception {
         Scanner sc=new Scanner(System.in);
 
-        System.out.println("Enter the Number Store Data ");
-        int No=sc.nextInt();
+
+
+//        int No=sc.nextInt();
 
         //Upcasting
         Bank a1=new ICCIBank();
+
+
         //downCasting
         ICCIBank b1=(ICCIBank) a1;
+        System.out.println("Enter the Number Store Data ");
+        b1.CustomerInfo();
 
        // ArrayList<Customer> data=new ArrayList<>();
-        System.out.println("Account No\t Name \tamt");
-        for(int i=0;i<No;i++)
-        {
-                b1.info();
+//        System.out.println("Account No\t Name \tamt");
+//        for(int i=0;i<No;i++)
+//        {
+//                b1.info();
+//
+//        }
 
-        }
+
         boolean status=true;
 
         while(status)
@@ -29,10 +37,11 @@ public class MainApp1 {
             System.out.println("2.Deposit Money");
             System.out.println("3.Withdraw Money");
             System.out.println("4.Checked Balance");
-            System.out.println("5.Delete Particulate Record");
+            System.out.println("5.Delete Particular Record");
             System.out.println("6.Search Customer record");
             System.out.println("7.Display  All Customer");
-            System.out.println("8.Exit");
+            System.out.println("8.Update Customer Name");
+            System.out.println("9.Exit");
 
 
             int choice=sc.nextInt();
@@ -85,28 +94,32 @@ public class MainApp1 {
                     break;
 
                 case 5:
-                    System.out.println("Delete Particulate record");
+                    System.out.println("Delete Particular  record");
                     System.out.println("Enter account Number");
-                    int accoNo= sc.nextInt();
-                    try {
-                        a1.DeleteRecord(accoNo);
-                    }catch (Exception e)
-                    {
-                        System.out.println(e);
-                    }
+                    int deleteID= sc.nextInt();
+                    a1.DeleteRecord(deleteID);
                     break;
 
                 case 6:
                     System.out.println("Search Customer record");
                     System.out.println("Enter account Number");
-                    int accoNo1= sc.nextInt();
-                    a1.SearchCustomerRecord(accoNo1);
+                    int searchID= sc.nextInt();
+                    a1.SearchCustomerRecord(searchID);
                     break;
 
                 case 7:
                     System.out.println("Display All Customer");
                     a1.displayAllCustomer();
                     break;
+
+                case 8:
+                    System.out.println("Update Customer Name");
+                    System.out.println("Enter account Number");
+                    int updateID= sc.nextInt();
+                    System.out.println("Enter Name Of Customer");
+                    String updateName=sc.next();
+                    a1.updateNameCustomer(updateID,updateName);
+                       break;
 
                 default:
                     status=false;

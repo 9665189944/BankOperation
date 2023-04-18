@@ -1,3 +1,5 @@
+package BankOperation;
+
 public interface Bank {
       void deposit(int accNo,double amt);
     void withdraw(int accNo,double amt) throws Exception;
@@ -8,6 +10,9 @@ public interface Bank {
     void SearchCustomerRecord(int accoNo) throws Exception;
 
     void DeleteRecord(int accoNo) throws Exception;
+
+
+    void updateNameCustomer(int updateID, String updateName);
 
 
 }

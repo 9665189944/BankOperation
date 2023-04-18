@@ -1,3 +1,5 @@
+package BankOperation;
+
 public class InsufficientBalance extends Exception{
     public InsufficientBalance(String msg)
     {
